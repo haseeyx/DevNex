@@ -4,115 +4,643 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terms & Conditions | DevNext</title>
+<meta name="description" content="DevNext terms & conditions — clear, fair and professional.">
 <meta name="theme-color" content="#061226">
 <link rel="icon" type="image/png" href="favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#061226;--bg2:#0a1a33;--navy:#0b2a5b;--aqua:#22d3ee;--aqua2:#c9f4ff;--text:#fff;--muted:#9fb3c8;--line:rgba(34,211,238,.22)}
+:root{
+  --bg:#061226;--burg:#0b2a5b;--rose:#0e9fbf;
+  --gold:#22d3ee;--gold2:#c9f4ff;--text:#fff;--muted:#9fb3c8;
+  --card:rgba(255,255,255,.045);--line:rgba(34,211,238,.18);
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;background:radial-gradient(800px 400px at 90% -10%,rgba(14,159,191,.25),transparent 60%),radial-gradient(700px 500px at -10% 60%,rgba(11,42,91,.7),transparent 60%),var(--bg);color:var(--text);line-height:1.7;min-height:100vh}
-a{color:var(--aqua);text-decoration:none}
-.wrap{width:min(860px,92%);margin:auto;padding:30px 0 60px}
-header{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:34px}
-header img{height:46px}
-.back{padding:10px 22px;border:1.5px solid var(--aqua);border-radius:50px;font-size:.9rem;font-weight:500;transition:.3s}
-.back:hover{background:var(--aqua);color:#04101f}
-.box{background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:26px;padding:44px;box-shadow:0 30px 70px rgba(0,0,0,.4)}
-h1{font-family:'Playfair Display',serif;font-size:2.3rem;margin-bottom:4px}
-.upd{color:var(--muted);font-size:.85rem;margin-bottom:26px}
-h2{font-size:1.1rem;color:var(--aqua2);margin:26px 0 6px;font-weight:600}
-p,li{color:var(--muted);font-size:.95rem}
-ul{padding-left:22px;margin-top:6px}
-b{color:var(--text);font-weight:600}
-.key{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:6px 0 10px}
-.key div{padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(14,159,191,.12);text-align:center;font-size:.85rem;color:var(--muted)}
-.key div span{display:block;font-size:1.7rem;margin-bottom:4px}
-.key div b{display:block;color:var(--aqua2)}
-.contact{margin-top:30px;padding:22px;border-radius:18px;border:1px solid var(--line);background:rgba(14,159,191,.12)}
-.contact h2{margin-top:0}
-.contact a{display:inline-block;margin:6px 16px 0 0;font-weight:500}
-.links{margin-top:26px;display:flex;gap:18px;flex-wrap:wrap;font-size:.88rem}
-.copy{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
-@media(max-width:600px){.box{padding:28px 20px}h1{font-size:1.8rem}}
-html,body{overflow-x:hidden}
-img{max-width:100%}
-.contact a,p,li{overflow-wrap:anywhere}
-@media(max-width:420px){.back{width:100%;text-align:center}header img{height:38px}}
+html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Poppins',sans-serif;color:var(--text);line-height:1.65;
+  background:var(--bg);overflow-x:hidden;position:relative;font-size:15px;
+}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(800px 450px at 85% -10%,rgba(14,159,191,.25),transparent 60%),
+  radial-gradient(700px 500px at -10% 50%,rgba(11,42,91,.45),transparent 60%),
+  radial-gradient(700px 500px at 60% 110%,rgba(11,42,91,.35),transparent 60%),var(--bg)}
+#particles{position:fixed;inset:0;z-index:-1;pointer-events:none}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:300;
+  background:linear-gradient(90deg,var(--burg),var(--gold),var(--gold2));
+  box-shadow:0 0 12px var(--gold);border-radius:0 3px 3px 0;transition:width .08s linear}
+
+a{color:var(--gold);text-decoration:none;transition:.3s}
+.gold{background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:200%;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:200% 0}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes fadeIn{to{opacity:1;transform:none}}
+@keyframes pulseGlow{50%{box-shadow:0 0 0 12px rgba(34,211,238,0)}}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 0;transition:.4s}
+nav.scrolled{background:rgba(6,18,38,.85);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);padding:8px 0}
+.nav-in{width:min(720px,92%);margin:auto;display:flex;align-items:center;
+  justify-content:space-between;gap:12px}
+.logo-img{height:40px;width:auto;display:block;
+  filter:drop-shadow(0 0 12px rgba(34,211,238,.25))}
+.back{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;
+  border:1.5px solid var(--gold);border-radius:50px;font-size:.8rem;font-weight:600;
+  color:var(--gold);transition:.3s;white-space:nowrap}
+.back:hover{background:var(--gold);color:#04101f;transform:translateY(-2px)}
+
+/* ===== PAGE WRAP ===== */
+.page{width:min(720px,92%);margin:auto;padding:96px 0 40px}
+
+/* ===== HERO ===== */
+.hero{text-align:center;margin-bottom:26px;position:relative;opacity:0;
+  transform:translateY(20px);animation:fadeIn .9s .1s forwards}
+.hero .ico-float{position:absolute;font-size:1.3rem;opacity:.18;pointer-events:none;
+  animation:float 6s ease-in-out infinite}
+.i1{top:0;left:6%;animation-delay:0s}
+.i2{top:15%;right:5%;animation-delay:-2s}
+.i3{bottom:0;left:14%;animation-delay:-4s}
+.i4{bottom:10%;right:12%;animation-delay:-1s}
+
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;
+  border:1px solid var(--line);border-radius:50px;background:var(--card);
+  font-size:.7rem;color:var(--gold2);margin-bottom:14px;backdrop-filter:blur(8px);
+  letter-spacing:.5px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,6vw,2.7rem);
+  line-height:1.15;margin-bottom:10px;font-weight:800}
+.hero .sub{color:var(--muted);font-size:.88rem;max-width:440px;margin:0 auto 16px}
+.meta-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.meta-row span{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;
+  border-radius:50px;border:1px solid var(--line);background:var(--card);
+  font-size:.7rem;color:var(--gold2);transition:.3s}
+.meta-row span:hover{border-color:var(--gold);transform:translateY(-2px)}
+
+/* ===== QUICK SUMMARY ===== */
+.quick-summary{
+  padding:18px 18px 16px;margin-bottom:20px;border-radius:16px;
+  border:1.5px solid var(--gold);
+  background:linear-gradient(135deg,rgba(14,159,191,.2),rgba(11,42,91,.5));
+  position:relative;overflow:hidden;
+  opacity:0;transform:translateY(20px);
+  animation:fadeIn .8s .25s forwards;
+}
+.quick-summary::before{content:"";position:absolute;top:-50%;right:-10%;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(34,211,238,.25),transparent 70%);
+  animation:pulseGlow 4s ease-in-out infinite}
+.qs-head{
+  display:flex;align-items:center;gap:10px;margin-bottom:12px;
+  position:relative;
+}
+.qs-head-ico{
+  width:36px;height:36px;flex-shrink:0;display:grid;place-items:center;
+  font-size:1.1rem;border-radius:10px;
+  background:linear-gradient(135deg,var(--burg),var(--rose));
+  box-shadow:0 8px 20px rgba(14,159,191,.45);
+  animation:float 5s ease-in-out infinite;
+}
+.qs-head strong{
+  color:var(--gold2);font-size:.75rem;letter-spacing:1.5px;
+  text-transform:uppercase;font-weight:700;
+}
+.qs-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:10px;position:relative;
+}
+.qs-item{
+  padding:12px 10px;border-radius:12px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.04);
+  text-align:center;transition:.3s;
+}
+.qs-item:hover{border-color:var(--gold);transform:translateY(-3px);
+  background:rgba(14,159,191,.12)}
+.qs-item .qs-ico{display:block;font-size:1.4rem;margin-bottom:4px}
+.qs-item b{display:block;color:var(--gold2);font-size:.8rem;
+  font-weight:600;line-height:1.3}
+.qs-item small{display:block;color:var(--muted);font-size:.7rem;
+  margin-top:2px;line-height:1.4}
+
+/* ===== ACCORDION ===== */
+.accordion{display:flex;flex-direction:column;gap:10px}
+
+.acc-item{
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+  transition:border-color .35s,box-shadow .35s;
+  opacity:0;transform:translateY(20px);
+  animation:fadeIn .7s forwards;
+}
+.acc-item:nth-child(1){animation-delay:.3s}
+.acc-item:nth-child(2){animation-delay:.34s}
+.acc-item:nth-child(3){animation-delay:.38s}
+.acc-item:nth-child(4){animation-delay:.42s}
+.acc-item:nth-child(5){animation-delay:.46s}
+.acc-item:nth-child(6){animation-delay:.5s}
+.acc-item:nth-child(7){animation-delay:.54s}
+.acc-item:nth-child(8){animation-delay:.58s}
+.acc-item:nth-child(9){animation-delay:.62s}
+.acc-item:nth-child(10){animation-delay:.66s}
+.acc-item:nth-child(11){animation-delay:.7s}
+.acc-item:hover{border-color:rgba(34,211,238,.4)}
+.acc-item.open{border-color:var(--gold);
+  box-shadow:0 18px 45px rgba(11,42,91,.4)}
+
+.acc-head{
+  width:100%;display:flex;align-items:center;gap:14px;
+  padding:16px 18px;background:none;border:none;color:inherit;
+  font:inherit;text-align:left;cursor:pointer;
+}
+.acc-ico{
+  width:40px;height:40px;flex-shrink:0;display:grid;place-items:center;
+  border-radius:11px;font-size:1.1rem;
+  background:linear-gradient(135deg,var(--burg),var(--rose));
+  box-shadow:0 6px 18px rgba(14,159,191,.35);
+  transition:transform .35s,box-shadow .35s;
+}
+.acc-item.open .acc-ico{transform:scale(1.08) rotate(-3deg);
+  box-shadow:0 10px 25px rgba(14,159,191,.5)}
+
+.acc-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.acc-num{font-size:.65rem;letter-spacing:2px;color:var(--gold);
+  font-weight:700;opacity:.75}
+.acc-title{font-size:.95rem;font-weight:600;line-height:1.35;
+  overflow-wrap:anywhere}
+.acc-item.open .acc-title{color:var(--gold2)}
+
+.acc-toggle{
+  width:28px;height:28px;flex-shrink:0;display:grid;place-items:center;
+  border-radius:50%;border:1px solid var(--line);
+  font-size:1rem;color:var(--gold);font-weight:300;
+  transition:all .35s;line-height:1;
+}
+.acc-item.open .acc-toggle{
+  transform:rotate(135deg);background:var(--gold);color:#04101f;
+  border-color:var(--gold);
+}
+
+.acc-body{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1);
+}
+.acc-item.open .acc-body{grid-template-rows:1fr}
+.acc-inner{overflow:hidden;padding:0 18px;transition:padding .35s}
+.acc-item.open .acc-inner{padding-bottom:16px}
+
+.acc-inner p,
+.acc-inner li{
+  font-size:.84rem;color:var(--muted);line-height:1.65;
+  overflow-wrap:anywhere;
+}
+.acc-inner p{margin-bottom:8px}
+.acc-inner p:last-child{margin-bottom:0}
+.acc-inner ul{list-style:none;padding:0;display:grid;gap:5px}
+.acc-inner li{padding-left:18px;position:relative}
+.acc-inner li::before{content:"▹";position:absolute;left:2px;
+  color:var(--gold);font-weight:700}
+.acc-inner strong{color:var(--gold2);font-weight:600}
+.acc-inner a{font-weight:600;text-decoration:underline;
+  text-decoration-color:rgba(34,211,238,.4);text-underline-offset:2px}
+.acc-inner a:hover{text-decoration-color:var(--gold)}
+
+/* ===== CONTACT ===== */
+.contact{
+  margin-top:20px;padding:24px 22px;border-radius:18px;
+  border:1.5px solid var(--gold);
+  background:linear-gradient(135deg,rgba(14,159,191,.16),rgba(11,42,91,.42));
+  position:relative;overflow:hidden;
+  opacity:0;transform:translateY(20px);
+  animation:fadeIn .7s .75s forwards;
+}
+.contact::before{content:"";position:absolute;top:-40%;right:-12%;
+  width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(34,211,238,.22),transparent 70%)}
+.contact h2{font-family:'Playfair Display',serif;font-size:1.2rem;
+  margin-bottom:6px;display:flex;align-items:center;gap:8px;position:relative}
+.contact p{color:var(--muted);font-size:.82rem;margin-bottom:14px;position:relative}
+.contact .row{display:flex;gap:8px;flex-wrap:wrap;position:relative}
+.contact a{display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:10px 16px;border-radius:50px;border:1px solid var(--line);
+  background:var(--card);font-weight:600;font-size:.8rem;color:var(--text);
+  flex:1;transition:.3s}
+.contact a:hover{background:var(--gold);color:#04101f;border-color:var(--gold);
+  transform:translateY(-2px)}
+
+/* ===== FOOTER ===== */
+.foot{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+  margin:24px 0 14px;opacity:0;animation:fadeIn .7s .8s forwards}
+.foot a{padding:8px 15px;border-radius:50px;border:1px solid var(--line);
+  background:var(--card);font-size:.75rem;font-weight:500;color:var(--muted);
+  transition:.3s}
+.foot a:hover{background:var(--burg);border-color:var(--gold);color:var(--gold);
+  transform:translateY(-2px)}
+.copy{text-align:center;color:var(--muted);font-size:.72rem;padding-bottom:16px;
+  opacity:0;animation:fadeIn .7s .85s forwards}
+.copy span{color:var(--gold)}
+
+/* ===== FLOATING ===== */
+.wa,.top{position:fixed;right:16px;z-index:99;border-radius:50%;
+  display:grid;place-items:center;border:none;cursor:pointer;transition:.35s}
+.wa{width:52px;height:52px;bottom:16px;background:#25d366;font-size:1.45rem;
+  box-shadow:0 8px 24px rgba(37,211,102,.45);animation:ring 2.6s infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(37,211,102,.65)}
+  100%{box-shadow:0 0 0 22px rgba(37,211,102,0)}}
+.wa:hover{transform:scale(1.08) translateY(-3px)}
+.top{width:44px;height:44px;bottom:76px;
+  background:linear-gradient(135deg,var(--burg),var(--rose));color:#fff;
+  font-size:1.05rem;opacity:0;visibility:hidden;transform:translateY(15px);
+  box-shadow:0 8px 22px rgba(11,42,91,.5)}
+.top.show{opacity:1;visibility:visible;transform:none}
+.top:hover{background:var(--gold);color:#04101f;transform:translateY(-3px)}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#04101f}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--burg),var(--rose));
+  border-radius:8px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+  body{font-size:14px}
+  .page{padding:82px 0 30px}
+  .logo-img{height:34px}
+  .back{padding:7px 13px;font-size:.74rem}
+  .hero{margin-bottom:22px}
+  .hero .ico-float{font-size:1rem;opacity:.14}
+  .badge{font-size:.66rem;padding:5px 12px}
+  .hero .sub{font-size:.82rem}
+  .meta-row span{font-size:.66rem;padding:4px 10px}
+  .quick-summary{padding:14px;border-radius:14px}
+  .qs-head-ico{width:32px;height:32px;font-size:1rem;border-radius:9px}
+  .qs-head strong{font-size:.7rem;letter-spacing:1.2px}
+  .qs-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .qs-item{padding:10px 8px}
+  .qs-item .qs-ico{font-size:1.2rem}
+  .qs-item b{font-size:.74rem}
+  .qs-item small{font-size:.66rem}
+  .accordion{gap:8px}
+  .acc-head{padding:14px 14px;gap:12px}
+  .acc-ico{width:36px;height:36px;font-size:1rem;border-radius:10px}
+  .acc-num{font-size:.6rem;letter-spacing:1.5px}
+  .acc-title{font-size:.88rem}
+  .acc-toggle{width:26px;height:26px;font-size:.9rem}
+  .acc-inner{padding:0 14px}
+  .acc-item.open .acc-inner{padding-bottom:14px}
+  .acc-inner p,.acc-inner li{font-size:.8rem}
+  .contact{padding:20px 16px}
+  .contact h2{font-size:1.05rem}
+  .contact a{width:100%;flex:auto}
+  .foot a{font-size:.7rem;padding:7px 12px}
+}
+@media(max-width:380px){
+  .page{padding-top:76px}
+  .logo-img{height:30px}
+  .back{padding:6px 11px;font-size:.7rem}
+  .hero h1{font-size:1.7rem}
+  .acc-title{font-size:.85rem}
+  .qs-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;
+    transition-duration:.01ms!important}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <a href="index.html"><img src="logo.png" alt="DevNext"></a>
-    <a class="back" href="index.html">← Back to Home</a>
+<div id="progress"></div>
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" aria-label="DevNext home"><img src="logo.png" alt="DevNext" class="logo-img"></a>
+    <a class="back" href="index.html">← Home</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <header class="hero">
+    <span class="ico-float i1">📜</span>
+    <span class="ico-float i2">✨</span>
+    <span class="ico-float i3">🤝</span>
+    <span class="ico-float i4">💎</span>
+
+    <div class="badge">📜 Legal · DevNext</div>
+    <h1>Terms &amp; <span class="gold">Conditions</span></h1>
+    <p class="sub">Clear, fair and professional — the simple rules behind every DevNext project.</p>
+    <div class="meta-row">
+      <span>📅 Nov 6, 2026</span>
+      <span>⏱ ~3 min read</span>
+      <span>📄 11 sections</span>
+    </div>
   </header>
-  <div class="box">
-    <h1>📜 Terms & Conditions</h1>
-    <p class="upd">Last updated: November 6, 2026</p>
-    <p>By hiring DevNext or using DevNext.site, you agree to the terms below. They are written to keep our work clear, fair and professional for both sides.</p>
 
-    <h2>⚡ Quick Summary</h2>
-    <div class="key">
-      <div><span>💰</span><b>50% Advance</b>to start the project</div>
-      <div><span>✅</span><b>50% on Completion</b>after full work is done</div>
-      <div><span>🔁</span><b>2–3 Revisions</b>included in every project</div>
-      <div><span>🚀</span><b>Fast Delivery</b>available at extra charge</div>
+  <!-- QUICK SUMMARY -->
+  <div class="quick-summary">
+    <div class="qs-head">
+      <div class="qs-head-ico">⚡</div>
+      <strong>Quick Summary</strong>
     </div>
-
-    <h2>1. Our Services</h2>
-    <p>DevNext provides Shopify store design and development, dropshipping store setup, website redesign, custom website development and mobile app UI/UX design, as agreed with you before the project starts.</p>
-
-    <h2>2. Payment Terms</h2>
-    <ul>
-      <li><b>50% advance payment</b> is required before we start any work.</li>
-      <li>The remaining <b>50% is paid after your full work is completed</b>, before we hand over final files, access or the live website.</li>
-      <li>The total price is agreed in writing (WhatsApp or email) before the project begins.</li>
-    </ul>
-
-    <h2>3. Revisions</h2>
-    <p>Every project includes <b>2 to 3 revisions</b>, depending on the project. Revisions cover changes to the agreed work such as colours, text, layout adjustments and fixes. Requests that change the original scope or add new features are treated as extra work and may be charged separately.</p>
-
-    <h2>4. Delivery Time</h2>
-    <p>We agree on a delivery time with you before starting. Delivery depends on you sending content, logos, product details and feedback on time. Delays from the client side may move the delivery date.</p>
-
-    <h2>5. Fast / Rush Delivery</h2>
-    <p>If you need your project sooner than our normal timeline, <b>extra charges apply for fast delivery</b>. The extra amount is told to you and agreed before we begin.</p>
-
-    <h2>6. Client Responsibilities</h2>
-    <ul>
-      <li>Provide accurate content, images, branding and product details.</li>
-      <li>Give feedback within a reasonable time.</li>
-      <li>Make sure the materials you give us do not break anyone's copyright or other rights.</li>
-    </ul>
-
-    <h2>7. Ownership</h2>
-    <p>After full payment, the final delivered work belongs to you. DevNext may show the finished project in our portfolio unless you ask us not to.</p>
-
-    <h2>8. Refunds</h2>
-    <p>If we cannot deliver what was agreed, you can get your money back as described in our <a href="refund-policy.html">Refund Policy</a>.</p>
-
-    <h2>9. Third-Party Services</h2>
-    <p>Hosting, Shopify plans, domains, apps, suppliers and payment gateways are provided by third parties. Their fees and policies are separate from our service fee, and we are not responsible for issues outside our control.</p>
-
-    <h2>10. Limitation of Liability</h2>
-    <p>DevNext is not responsible for indirect losses such as lost sales or profits that result from factors outside our work, including market conditions, advertising results or third-party platform changes.</p>
-
-    <h2>11. Changes to These Terms</h2>
-    <p>We may update these terms from time to time. The latest version is always available on this page.</p>
-
-    <div class="contact">
-      <h2>📞 Contact Us</h2>
-      <p>Have a question or an issue with these terms? Reach us here:</p>
-      <a href="mailto:devnext.site@gmail.com">📧 devnext.site@gmail.com</a>
-      <a href="https://wa.me/923206708586" target="_blank">💬 WhatsApp: +92 320 6708586</a>
-    </div>
-
-    <div class="links">
-      <a href="privacy-policy.html">🔒 Privacy Policy</a>
-      <a href="refund-policy.html">💸 Refund Policy</a>
+    <div class="qs-grid">
+      <div class="qs-item">
+        <span class="qs-ico">💰</span>
+        <b>50% Advance</b>
+        <small>to start</small>
+      </div>
+      <div class="qs-item">
+        <span class="qs-ico">✅</span>
+        <b>50% on Completion</b>
+        <small>after full work</small>
+      </div>
+      <div class="qs-item">
+        <span class="qs-ico">🔁</span>
+        <b>2–3 Revisions</b>
+        <small>included</small>
+      </div>
+      <div class="qs-item">
+        <span class="qs-ico">🚀</span>
+        <b>Fast Delivery</b>
+        <small>extra charge</small>
+      </div>
     </div>
   </div>
-  <p class="copy">© 2026 DevNext. All rights reserved.</p>
+
+  <!-- ACCORDION -->
+  <main class="accordion">
+
+    <div class="acc-item">
+      <button class="acc-head" aria-expanded="false">
+        <span class="acc-ico">🛠️</span>
+        <span class="acc-main">
+          <span class="acc-num">01</span>
+          <span class="acc-title">Our Services</span>
+        </span>
+        <span class="acc-toggle">+</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner">
+          <p>DevNext provides Shopify store design &amp; development, dropshipping setup, website redesign, custom website development, and mobile app UI/UX design — as agreed with you before the project starts.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-head" aria-expanded="false">
+        <span class="acc-ico">💰</span>
+        <span class="acc-main">
+          <span class="acc-num">02</span>
+          <span class="acc-title">Payment Terms</span>
+        </span>
+        <span class="acc-toggle">+</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner">
+          <ul>
+            <li><strong>50% advance</strong> before any work begins.</li>
+            <li>Remaining <strong>50% after full completion</strong>, before final files or live access are handed over.</li>
+            <li>Total price is agreed <strong>in writing</strong> (WhatsApp or email) before the project starts.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-head" aria-expanded="false">
+        <span class="acc-ico">🔁</span>
+        <span class="acc-main">
+          <span class="acc-num">03</span>
+          <span class="acc-title">Revisions</span>
+        </span>
+        <span class="acc-toggle">+</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner">
+          <p>Every project includes <strong>2–3 revisions</strong> covering colours, text, layout tweaks and fixes. Anything outside the original scope is treated as extra work and may be charged separately.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-head" aria-expanded="false">
+        <span class="acc-ico">⏱️</span>
+        <span class="acc-main">
+          <span class="acc-num">04</span>
+          <span class="acc-title">Delivery Time</span>
+        </span>
+        <span class="acc-toggle">+</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner">
+          <p>Delivery time is agreed before we begin. It depends on you sending content, logos, product details and feedback on time — client-side delays may push the date.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-head" aria-expanded="false">
+        <span class="acc-ico">🚀</span>
+        <span class="acc-main">
+          <span class="acc-num">05</span>
+          <span class="acc-title">Fast / Rush Delivery</span>
+        </span>
+        <span class="acc-toggle">+</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner">
+          <p>Need your project sooner than our normal timeline? <strong>Extra charges apply</strong> — agreed before we start.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-head" aria-expanded="false">
+        <span class="acc-ico">🤝</span>
+        <span class="acc-main">
+          <span class="acc-num">06</span>
+          <span class="acc-title">Client Responsibilities</span>
+        </span>
+        <span class="acc-toggle">+</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner">
+          <ul>
+            <li>Provide accurate <strong>content, images, branding &amp; product details</strong>.</li>
+            <li>Give <strong>feedback promptly</strong>.</li>
+            <li>Ensure materials you share don't break anyone's <strong>copyright or rights</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-head" aria-expanded="false">
+        <span class="acc-ico">🏷️</span>
+        <span class="acc-main">
+          <span class="acc-num">07</span>
+          <span class="acc-title">Ownership</span>
+        </span>
+        <span class="acc-toggle">+</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner">
+          <p>After full payment, the <strong>final delivered work belongs to you</strong>. DevNext may showcase the project in our portfolio unless you ask us not to.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-head" aria-expanded="false">
+        <span class="acc-ico">💸</span>
+        <span class="acc-main">
+          <span class="acc-num">08</span>
+          <span class="acc-title">Refunds</span>
+        </span>
+        <span class="acc-toggle">+</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner">
+          <p>If we can't deliver what was agreed, you can get your money back as described in our <a href="refund-policy.html">Refund Policy</a>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-head" aria-expanded="false">
+        <span class="acc-ico">🔗</span>
+        <span class="acc-main">
+          <span class="acc-num">09</span>
+          <span class="acc-title">Third-Party Services</span>
+        </span>
+        <span class="acc-toggle">+</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner">
+          <p>Hosting, Shopify plans, domains, apps, suppliers and payment gateways are provided by third parties. Their fees and policies are separate from our service fee, and we're not responsible for issues outside our control.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-head" aria-expanded="false">
+        <span class="acc-ico">⚖️</span>
+        <span class="acc-main">
+          <span class="acc-num">10</span>
+          <span class="acc-title">Limitation of Liability</span>
+        </span>
+        <span class="acc-toggle">+</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner">
+          <p>DevNext is not responsible for <strong>indirect losses</strong> such as lost sales or profits caused by factors outside our work — including market conditions, ad results or third-party platform changes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-head" aria-expanded="false">
+        <span class="acc-ico">🔄</span>
+        <span class="acc-main">
+          <span class="acc-num">11</span>
+          <span class="acc-title">Changes to These Terms</span>
+        </span>
+        <span class="acc-toggle">+</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-inner">
+          <p>We may update these terms from time to time. The latest version is always available on this page.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <h2>📞 Contact Us</h2>
+    <p>Have a question about these terms? Reach out — we respond fast.</p>
+    <div class="row">
+      <a href="mailto:devnext.site@gmail.com">📧 Email Us</a>
+      <a href="https://wa.me/923206708586" target="_blank">💬 WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <a href="privacy.html">🔒 Privacy</a>
+    <a href="refund.html">💸 Refund</a>
+    <a href="index.html">🏠 Home</a>
+  </div>
+  <p class="copy">© <span id="yr"></span> DevNext · Made with ❤️ for UAE businesses</p>
+
 </div>
+
+<a class="wa" href="https://wa.me/923206708586?text=Hi%20DevNext" target="_blank" aria-label="WhatsApp">💬</a>
+<button class="top" id="topBtn" aria-label="Back to top">↑</button>
+
+<script>
+// year
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// nav scrolled
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+
+// progress bar
+const prog = document.getElementById('progress');
+function setProg(){
+  const d = document.documentElement.scrollHeight - innerHeight;
+  prog.style.width = (d > 0 ? (scrollY / d) * 100 : 0) + '%';
+}
+addEventListener('scroll', setProg, {passive:true});
+addEventListener('resize', setProg);
+setProg();
+
+// back to top
+const topBtn = document.getElementById('topBtn');
+addEventListener('scroll', () => topBtn.classList.toggle('show', scrollY > 400));
+topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+// accordion — multiple open allowed
+document.querySelectorAll('.acc-head').forEach(head => {
+  head.addEventListener('click', () => {
+    const item = head.parentElement;
+    const isOpen = item.classList.toggle('open');
+    head.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+});
+
+// particles
+const cv = document.getElementById('particles'), cx = cv.getContext('2d');
+let W, H, P = [];
+function size(){ W = cv.width = innerWidth; H = cv.height = innerHeight; }
+size();
+addEventListener('resize', size);
+for (let i = 0; i < 40; i++) P.push({
+  x: Math.random()*innerWidth,
+  y: Math.random()*innerHeight,
+  r: Math.random()*1.8 + .4,
+  s: Math.random()*.4 + .12,
+  a: Math.random()*.45 + .15
+});
+(function draw(){
+  cx.clearRect(0,0,W,H);
+  P.forEach(p => {
+    p.y -= p.s;
+    if (p.y < -5){ p.y = H + 5; p.x = Math.random()*W; }
+    cx.beginPath();
+    cx.arc(p.x, p.y, p.r, 0, 7);
+    cx.fillStyle = `rgba(34,211,238,${p.a})`;
+    cx.fill();
+  });
+  requestAnimationFrame(draw);
+})();
+</script>
 </body>
 </html>

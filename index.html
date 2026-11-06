@@ -55,6 +55,20 @@ nav.scrolled{background:rgba(6,18,38,.85);backdrop-filter:blur(14px);border-bott
 .btn-ghost:hover{background:var(--gold);color:#04101f;transform:translateY(-4px)}
 .burger{display:none;font-size:1.7rem;background:none;border:none;color:var(--gold);cursor:pointer}
 
+/* ===== MOBILE MENU BACKDROP (closes menu on outside tap) ===== */
+.nav-backdrop{
+  position:fixed;inset:0;z-index:99;
+  background:rgba(4,12,26,.65);
+  -webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(4px);
+  opacity:0;visibility:hidden;
+  transition:opacity .4s ease,visibility .4s ease;
+}
+.nav-backdrop.show{opacity:1;visibility:visible}
+body.menu-open{overflow:hidden}
+body.menu-open .wa{opacity:0;pointer-events:none}
+.wa{transition:opacity .3s ease}
+
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding-top:110px;overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
@@ -380,9 +394,12 @@ section,footer,.marquee{overflow-x:clip}
       <a href="#process">Process</a>
       <a href="#contact" class="btn btn-primary" style="color:#fff;padding:10px 22px">💬 Get a Quote</a>
     </div>
-    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links">☰</button>
   </div>
 </nav>
+
+<!-- MOBILE MENU BACKDROP (tap outside to close) -->
+<div class="nav-backdrop" id="backdrop" aria-hidden="true"></div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -673,44 +690,64 @@ section,footer,.marquee{overflow-x:clip}
 
 <a class="wa" href="https://wa.me/923206708586?text=Hi%20DevNext" target="_blank" aria-label="WhatsApp">💬</a>
 
-<!-- POLICY MODALS (later you can move each into its own .html file) -->
-<div class="modal" id="m-privacy"><div class="modal-box"><button class="close">✕</button>
-  <h2>🔒 Privacy Policy</h2><p>Last updated: <span class="ud"></span></p>
-  <h3>1. Information We Collect</h3><p>We collect the details you share with us such as your name, email address, phone number and project requirements when you contact us.</p>
-  <h3>2. How We Use It</h3><p>Your information is used only to reply to your inquiry, provide quotes, deliver services and improve our communication.</p>
-  <h3>3. Data Protection</h3><p>We do not sell or rent your personal data. We take reasonable steps to keep your information safe.</p>
-  <h3>4. Third-Party Tools</h3><p>We may use tools like WhatsApp, email and analytics, which have their own privacy policies.</p>
-  <h3>5. Contact</h3><p>Questions? Email devnext.site@gmail.com.</p>
-</div></div>
 
-<div class="modal" id="m-terms"><div class="modal-box"><button class="close">✕</button>
-  <h2>📜 Terms & Conditions</h2><p>Last updated: <span class="ud"></span></p>
-  <h3>1. Services</h3><p>DevNext provides web development, Shopify store setup, website redesign and mobile app UI/UX design as agreed with the client.</p>
-  <h3>2. Payments</h3><p>Projects start after an agreed advance payment. The remaining balance is due before final delivery of files or access.</p>
-  <h3>3. Client Responsibilities</h3><p>Clients must provide required content, logos, product details and timely feedback. Delays may affect delivery time.</p>
-  <h3>4. Revisions</h3><p>Each plan includes a reasonable number of revisions. Extra work outside the agreed scope may be charged separately.</p>
-  <h3>5. Ownership</h3><p>After full payment, the client owns the final deliverables. DevNext may showcase the work in its portfolio unless requested otherwise.</p>
-  <h3>6. Liability</h3><p>DevNext is not responsible for losses from third-party platforms, hosting, suppliers or services outside our control.</p>
-</div></div>
-
-<div class="modal" id="m-refund"><div class="modal-box"><button class="close">✕</button>
-  <h2>💸 Refund Policy</h2><p>Last updated: <span class="ud"></span></p>
-  <h3>1. Before Work Starts</h3><p>If you cancel before we begin work, your advance payment can be refunded.</p>
-  <h3>2. After Work Starts</h3><p>Once design or development has started, the advance payment is non-refundable as it covers time and resources already used.</p>
-  <h3>3. Issues</h3><p>If something doesn't match the agreed scope, we will fix it free of charge within a reasonable time.</p>
-  <h3>4. Contact</h3><p>For refund requests, email devnext.site@gmail.com.</p>
-</div></div>
 
 <script>
 // year + dates
 document.getElementById('yr').textContent=new Date().getFullYear();
 document.querySelectorAll('.ud').forEach(e=>e.textContent=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}));
 
-// nav
-const nav=document.getElementById('nav'),links=document.getElementById('links');
+/* ===================== NAV / MOBILE MENU ===================== */
+const nav      = document.getElementById('nav');
+const links    = document.getElementById('links');
+const burger   = document.getElementById('burger');
+const backdrop = document.getElementById('backdrop');
+
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
-document.getElementById('burger').onclick=()=>links.classList.toggle('open');
-links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
+
+function openMenu(){
+  links.classList.add('open');
+  backdrop.classList.add('show');
+  document.body.classList.add('menu-open');
+  burger.innerHTML='✕';
+  burger.setAttribute('aria-expanded','true');
+}
+function closeMenu(){
+  if(!links.classList.contains('open') && !backdrop.classList.contains('show')) return;
+  links.classList.remove('open');
+  backdrop.classList.remove('show');
+  document.body.classList.remove('menu-open');
+  burger.innerHTML='☰';
+  burger.setAttribute('aria-expanded','false');
+}
+
+// burger toggle
+burger.addEventListener('click',e=>{
+  e.preventDefault();
+  e.stopPropagation();
+  links.classList.contains('open') ? closeMenu() : openMenu();
+});
+
+// click on the dimmed area = close
+backdrop.addEventListener('click',closeMenu);
+
+// any link inside menu = close
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+
+// click anywhere outside the menu panel = close  (covers taps on the nav bar, logo area, etc.)
+document.addEventListener('click',e=>{
+  if(!links.classList.contains('open')) return;
+  if(links.contains(e.target)) return;
+  if(burger.contains(e.target)) return;
+  closeMenu();
+});
+
+// Esc key = close
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeMenu(); });
+
+// returning to desktop = close
+addEventListener('resize',()=>{ if(innerWidth>960) closeMenu(); });
+/* ============================================================ */
 
 // typing text
 const words=[" Shopify Stores 🛍️"," Modern Websites 💻"," Dropshipping Brands 📦"," App Designs 📱"];
