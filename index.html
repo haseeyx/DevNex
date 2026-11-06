@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevNext | Shopify & Web Development Agency for UAE</title>
+<meta name="description" content="DevNext builds premium Shopify stores, custom websites, redesigns and mobile app UI/UX for businesses in the UAE.">
+<meta name="theme-color" content="#061226">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta property="og:image" content="logo.png">
+<meta property="og:title" content="DevNext | Shopify & Web Development Agency for UAE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#061226; --bg2:#0a1a33; --burg:#0b2a5b; --burg2:#0a1f44; --burg3:#04101f;
+  --rose:#0e9fbf; --gold:#22d3ee; --gold2:#c9f4ff; --text:#ffffff; --muted:#9fb3c8;
+  --card:rgba(255,255,255,.05); --line:rgba(34,211,238,.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.15}
+a{color:inherit;text-decoration:none}
+.container{width:min(1180px,92%);margin:auto}
+section{padding:100px 0;position:relative}
+.gold{background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200%;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:200% 0}}
+
+/* background glow */
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:
+ radial-gradient(900px 500px at 85% -10%,rgba(14,159,191,.28),transparent 60%),
+ radial-gradient(700px 500px at -10% 45%,rgba(10,31,68,.45),transparent 60%),
+ radial-gradient(800px 600px at 60% 110%,rgba(11,42,91,.4),transparent 60%),var(--bg)}
+#particles{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;transition:.4s}
+nav.scrolled{background:rgba(6,18,38,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:9px 0}
+.nav-in{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:800;display:flex;align-items:center;gap:8px}
+.logo span.mark{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--burg),var(--rose));box-shadow:0 0 22px rgba(14,159,191,.55);font-size:1.15rem}
+.logo b{color:var(--gold)}
+.links{display:flex;gap:30px;align-items:center}
+.links a{font-size:.92rem;color:var(--muted);transition:.3s;position:relative}
+.links a:hover{color:var(--gold)}
+.links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:2px;background:var(--gold);transition:.3s}
+.links a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 28px;border-radius:50px;font-weight:600;font-size:.95rem;border:none;cursor:pointer;transition:.35s;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,var(--burg),var(--rose));color:#fff;box-shadow:0 10px 30px rgba(11,42,91,.55)}
+.btn-primary:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 16px 40px rgba(14,159,191,.6)}
+.btn-ghost{background:transparent;color:var(--gold);border:1.5px solid var(--gold)}
+.btn-ghost:hover{background:var(--gold);color:#04101f;transform:translateY(-4px)}
+.burger{display:none;font-size:1.7rem;background:none;border:none;color:var(--gold);cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:110px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.badge{display:inline-flex;gap:8px;align-items:center;padding:8px 18px;border:1px solid var(--line);border-radius:50px;background:var(--card);font-size:.85rem;color:var(--gold2);margin-bottom:22px;backdrop-filter:blur(8px)}
+.hero h1{font-size:clamp(2.4rem,5.2vw,4.3rem);margin-bottom:20px}
+.typed{min-height:1.2em;display:block}
+.cursor{display:inline-block;width:3px;height:.9em;background:var(--gold);margin-left:4px;animation:blink 1s steps(1) infinite;vertical-align:-.08em}
+@keyframes blink{50%{opacity:0}}
+.hero p.lead{color:var(--muted);font-size:1.08rem;max-width:540px;margin-bottom:32px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:38px}
+.trust{display:flex;gap:30px;flex-wrap:wrap}
+.trust div{font-size:.85rem;color:var(--muted)}
+.trust b{display:block;font-size:1.6rem;color:var(--gold);font-family:'Playfair Display',serif}
+
+/* 3D SCENE */
+.scene-wrap{perspective:1400px;height:520px;display:grid;place-items:center;position:relative}
+.scene{position:relative;width:340px;height:340px;transform-style:preserve-3d;transition:transform .15s ease-out}
+.cube{position:absolute;inset:70px;transform-style:preserve-3d;animation:spin 16s linear infinite}
+@keyframes spin{from{transform:rotateX(-20deg) rotateY(0)}to{transform:rotateX(340deg) rotateY(360deg)}}
+.face{position:absolute;width:200px;height:200px;display:grid;place-items:center;font-size:4rem;
+ background:linear-gradient(135deg,rgba(11,42,91,.85),rgba(4,16,34,.95));border:1.5px solid var(--gold);border-radius:22px;
+ box-shadow:inset 0 0 50px rgba(34,211,238,.25),0 0 40px rgba(14,159,191,.35);backface-visibility:visible}
+.face small{position:absolute;bottom:14px;font-size:.7rem;letter-spacing:2px;color:var(--gold2);font-family:'Poppins'}
+.f1{transform:translateZ(100px)}.f2{transform:rotateY(180deg) translateZ(100px)}
+.f3{transform:rotateY(90deg) translateZ(100px)}.f4{transform:rotateY(-90deg) translateZ(100px)}
+.f5{transform:rotateX(90deg) translateZ(100px)}.f6{transform:rotateX(-90deg) translateZ(100px)}
+.ring{position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(34,211,238,.55);transform-style:preserve-3d}
+.r1{animation:ringA 12s linear infinite}
+.r2{inset:-40px;border:2px solid rgba(14,159,191,.5);animation:ringB 18s linear infinite}
+.r3{inset:-85px;border:1.5px dotted rgba(34,211,238,.45);animation:ringC 24s linear infinite}
+@keyframes ringA{from{transform:rotateX(75deg) rotateZ(0)}to{transform:rotateX(75deg) rotateZ(360deg)}}
+@keyframes ringB{from{transform:rotateY(70deg) rotateZ(0)}to{transform:rotateY(70deg) rotateZ(-360deg)}}
+@keyframes ringC{from{transform:rotateX(60deg) rotateY(40deg) rotateZ(0)}to{transform:rotateX(60deg) rotateY(40deg) rotateZ(360deg)}}
+.orb{position:absolute;display:grid;place-items:center;width:62px;height:62px;border-radius:18px;font-size:1.7rem;
+ background:rgba(255,255,255,.07);border:1px solid var(--line);backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.o1{top:-10px;left:-60px;animation:float 5s ease-in-out infinite;transform:translateZ(120px)}
+.o2{top:40px;right:-90px;animation:float 6s ease-in-out -2s infinite;transform:translateZ(160px)}
+.o3{bottom:20px;left:-90px;animation:float 7s ease-in-out -1s infinite;transform:translateZ(140px)}
+.o4{bottom:-20px;right:-50px;animation:float 5.5s ease-in-out -3s infinite;transform:translateZ(100px)}
+.o5{top:-60px;right:30px;animation:float 6.5s ease-in-out -4s infinite;transform:translateZ(180px)}
+@keyframes float{0%,100%{margin-top:0}50%{margin-top:-22px}}
+.glow-floor{position:absolute;bottom:20px;width:320px;height:60px;border-radius:50%;background:radial-gradient(closest-side,rgba(14,159,191,.55),transparent);filter:blur(10px);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.25);opacity:.6}}
+
+/* MARQUEE */
+.marquee{padding:22px 0;border-block:1px solid var(--line);background:rgba(11,42,91,.4);overflow:hidden}
+.track{display:flex;gap:60px;width:max-content;animation:scroll 28s linear infinite;color:var(--gold2);font-weight:500;white-space:nowrap}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* SECTION HEAD */
+.head{text-align:center;max-width:700px;margin:0 auto 60px}
+.tag{display:inline-block;color:var(--gold);letter-spacing:3px;font-size:.8rem;font-weight:600;margin-bottom:12px}
+.head h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:14px}
+.head p{color:var(--muted)}
+
+/* SERVICES */
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:34px 28px;position:relative;overflow:hidden;transition:.45s;backdrop-filter:blur(10px)}
+.card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,42,91,.55),transparent 60%);opacity:0;transition:.45s}
+.card:hover{transform:translateY(-12px) rotateX(3deg);border-color:var(--gold);box-shadow:0 25px 50px rgba(11,42,91,.45)}
+.card:hover::before{opacity:1}
+.card>*{position:relative}
+.ico{width:66px;height:66px;display:grid;place-items:center;font-size:2rem;border-radius:20px;margin-bottom:20px;background:linear-gradient(135deg,var(--burg),var(--rose));box-shadow:0 10px 25px rgba(14,159,191,.4);animation:float 4.5s ease-in-out infinite}
+.card h3{font-size:1.3rem;margin-bottom:10px}
+.card p{color:var(--muted);font-size:.92rem;margin-bottom:14px}
+.card ul{list-style:none;font-size:.85rem;color:var(--gold2)}
+.card li{padding:3px 0}
+
+/* MORE SERVICES */
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:50px}
+.chip{padding:12px 22px;border-radius:50px;border:1px solid var(--line);background:var(--card);font-size:.9rem;transition:.3s}
+.chip:hover{background:var(--burg);border-color:var(--gold);transform:translateY(-4px) scale(1.05)}
+
+/* SHOPIFY HIGHLIGHT */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.split h2{font-size:clamp(1.9rem,3.6vw,2.8rem);margin-bottom:18px}
+.split p{color:var(--muted);margin-bottom:22px}
+.checks{list-style:none;display:grid;gap:12px;margin-bottom:30px}
+.checks li{display:flex;gap:12px;align-items:flex-start;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:16px;transition:.3s}
+.checks li:hover{transform:translateX(10px);border-color:var(--gold)}
+.mock{perspective:1200px}
+.browser{background:linear-gradient(160deg,#0c1f3d,#040d1c);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 60px rgba(11,42,91,.35);transform:rotateY(-14deg) rotateX(6deg);transition:.6s;animation:bob 6s ease-in-out infinite}
+.mock:hover .browser{transform:rotateY(0) rotateX(0)}
+@keyframes bob{50%{translate:0 -14px}}
+.bar{display:flex;gap:7px;padding:14px;background:rgba(255,255,255,.05)}
+.bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.shop{padding:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.item{aspect-ratio:1;border-radius:14px;display:grid;place-items:center;font-size:2.2rem;background:linear-gradient(135deg,rgba(11,42,91,.7),rgba(14,159,191,.25));border:1px solid var(--line);animation:pop 3s ease-in-out infinite}
+.item:nth-child(2n){animation-delay:-1s}.item:nth-child(3n){animation-delay:-2s}
+@keyframes pop{50%{transform:scale(1.08)}}
+.cartbar{margin:0 22px 22px;padding:14px;border-radius:14px;background:linear-gradient(135deg,var(--burg),var(--rose));display:flex;justify-content:space-between;font-size:.9rem;font-weight:600}
+
+/* PROCESS */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;counter-reset:s}
+.step{text-align:center;padding:30px 22px;border-radius:24px;border:1px solid var(--line);background:var(--card);transition:.4s}
+.step:hover{transform:translateY(-10px);background:rgba(11,42,91,.35)}
+.step .n{width:64px;height:64px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;font-size:1.8rem;border:2px solid var(--gold);box-shadow:0 0 25px rgba(34,211,238,.3)}
+.step h3{font-size:1.15rem;margin-bottom:8px}
+.step p{font-size:.88rem;color:var(--muted)}
+
+/* PRICING */
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;align-items:stretch}
+.plan{padding:38px 30px;border-radius:28px;border:1px solid var(--line);background:var(--card);position:relative;transition:.45s;display:flex;flex-direction:column}
+.plan:hover{transform:translateY(-12px);box-shadow:0 30px 60px rgba(11,42,91,.45)}
+.plan.pop{background:linear-gradient(160deg,rgba(11,42,91,.8),rgba(4,16,34,.95));border:1.5px solid var(--gold);transform:scale(1.04)}
+.plan.pop:hover{transform:scale(1.04) translateY(-12px)}
+.ribbon{position:absolute;top:-14px;left:50%;translate:-50% 0;background:linear-gradient(90deg,var(--burg),var(--rose));color:#fff;border:1px solid var(--gold2);font-weight:700;font-size:.75rem;padding:6px 18px;border-radius:50px;letter-spacing:1px}
+.plan h3{font-size:1.5rem;margin-bottom:6px}
+.plan .sub{color:var(--muted);font-size:.88rem;margin-bottom:18px}
+.amt{font-family:'Playfair Display',serif;font-size:2.6rem;color:var(--gold);margin-bottom:4px}
+.amt small{font-size:.9rem;color:var(--muted);font-family:'Poppins'}
+.plan ul{list-style:none;margin:20px 0 28px;flex:1}
+.plan li{padding:8px 0;font-size:.92rem;border-bottom:1px dashed rgba(255,255,255,.08)}
+.note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:30px}
+
+/* FAQ */
+.faq{max-width:800px;margin:auto;display:grid;gap:14px}
+details{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 24px;transition:.3s}
+details[open]{border-color:var(--gold);background:rgba(11,42,91,.25)}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"➕";font-size:.9rem}
+details[open] summary::after{content:"➖"}
+details p{color:var(--muted);margin-top:12px;font-size:.92rem}
+
+/* CONTACT */
+.contact-box{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:50px;border-radius:32px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(11,42,91,.5),rgba(6,18,38,.85));box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.contact-box h2{font-size:2.3rem;margin-bottom:14px}
+.contact-box p{color:var(--muted);margin-bottom:24px}
+.c-item{display:flex;gap:14px;align-items:center;padding:16px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line);margin-bottom:14px;transition:.3s}
+.c-item:hover{transform:translateX(8px);border-color:var(--gold)}
+.c-item span.i{font-size:1.5rem}
+.c-item small{display:block;color:var(--muted);font-size:.75rem}
+form{display:grid;gap:14px}
+input,select,textarea{width:100%;padding:15px 18px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.35);color:var(--text);font-family:inherit;font-size:.95rem;outline:none;transition:.3s}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(34,211,238,.15)}
+select option{background:#0a1a33}
+textarea{min-height:110px;resize:vertical}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);background:rgba(0,0,0,.4);padding:60px 0 24px}
+.f-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:40px}
+footer h4{color:var(--gold);margin-bottom:16px;font-size:1rem}
+footer p,footer a{color:var(--muted);font-size:.9rem;display:block;margin-bottom:10px;transition:.3s;cursor:pointer}
+footer a:hover{color:var(--gold);transform:translateX(5px)}
+.copy{text-align:center;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+
+/* FLOAT WHATSAPP */
+.wa{position:fixed;right:22px;bottom:22px;z-index:99;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;font-size:1.9rem;background:#25d366;box-shadow:0 10px 30px rgba(37,211,102,.5);animation:ring 2.4s infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(37,211,102,.7)}100%{box-shadow:0 0 0 28px rgba(37,211,102,0)}}
+
+/* MODAL (policy pages) */
+.modal{position:fixed;inset:0;z-index:200;background:rgba(4,12,26,.92);backdrop-filter:blur(10px);display:none;padding:30px 16px;overflow-y:auto}
+.modal.open{display:block;animation:fade .3s}
+@keyframes fade{from{opacity:0}}
+.modal-box{max-width:820px;margin:30px auto;background:linear-gradient(160deg,#0c1f3d,#040d1c);border:1px solid var(--gold);border-radius:26px;padding:44px;position:relative}
+.modal-box h2{font-size:2rem;margin-bottom:6px}
+.modal-box h3{font-size:1.15rem;margin:22px 0 6px;color:var(--gold2);font-family:'Poppins';font-weight:600}
+.modal-box p,.modal-box li{color:var(--muted);font-size:.93rem}
+.modal-box ul{padding-left:20px}
+.close{position:absolute;top:18px;right:22px;font-size:1.4rem;background:var(--burg);color:#fff;border:none;border-radius:50%;width:42px;height:42px;cursor:pointer}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(50px);transition:1s cubic-bezier(.2,.7,.2,1)}
+.reveal.show{opacity:1;transform:none}
+.wordfx span{display:inline-block;opacity:0;transform:translateY(30px) rotateX(-60deg);transition:.7s}
+.wordfx.show span{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .hero-grid,.split,.contact-box{grid-template-columns:1fr}
+  .scene-wrap{height:430px;transform:scale(.82)}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .links{position:fixed;top:0;right:-100%;height:100vh;width:76%;flex-direction:column;justify-content:center;background:#040d1c;transition:.5s;border-left:1px solid var(--line)}
+  .links.open{right:0}
+  .burger{display:block;z-index:101}
+  .plan.pop{transform:none}.plan.pop:hover{transform:translateY(-12px)}
+  .contact-box{padding:30px 22px}
+  .modal-box{padding:30px 22px}
+}
+@media(max-width:560px){.f-grid{grid-template-columns:1fr}.scene-wrap{transform:scale(.68);height:360px}section{padding:70px 0}}
+
+/* PROGRESS LINE + LOGO + NEW SECTIONS */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:300;background:linear-gradient(90deg,var(--burg),var(--gold),var(--gold2));box-shadow:0 0 14px var(--gold);border-radius:0 4px 4px 0;transition:width .08s linear}
+.logo-img{height:46px;width:auto;display:block;filter:drop-shadow(0 0 14px rgba(34,211,238,.25))}
+footer .logo-img{height:54px;margin-bottom:14px}
+.head .line{display:block;width:0;height:3px;margin:18px auto 0;border-radius:3px;background:linear-gradient(90deg,var(--burg),var(--gold));box-shadow:0 0 12px var(--gold);transition:width 1.2s .3s cubic-bezier(.2,.7,.2,1)}
+.head.show .line{width:140px}
+.steps{position:relative}
+.steps::before{content:"";position:absolute;top:62px;left:10%;height:3px;width:0;border-radius:3px;background:linear-gradient(90deg,var(--burg),var(--gold),var(--gold2));box-shadow:0 0 12px var(--gold);transition:width 2s .4s ease}
+.steps.show::before{width:80%}
+.step{position:relative;z-index:1}
+.step .n{background:var(--bg2)}
+.steps.five{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:26px;align-items:center}
+.cmp{padding:34px;border-radius:26px;border:1px solid var(--line);background:var(--card)}
+.cmp h3{margin-bottom:14px;font-size:1.4rem}
+.cmp ul{list-style:none}
+.cmp li{padding:9px 0;border-bottom:1px dashed rgba(255,255,255,.08);color:var(--muted);font-size:.95rem}
+.cmp.bad{opacity:.85}
+.cmp.good{border-color:var(--gold);background:linear-gradient(160deg,rgba(14,159,191,.25),rgba(4,16,34,.9));box-shadow:0 20px 60px rgba(14,159,191,.25)}
+.cmp.good li{color:var(--text)}
+.compare .arrow{font-size:2.2rem;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(10px)}}
+.ind-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;margin-bottom:70px}
+.ind{padding:26px 14px;text-align:center;border-radius:20px;border:1px solid var(--line);background:var(--card);transition:.35s;font-size:.92rem}
+.ind span{display:block;font-size:2.2rem;margin-bottom:8px}
+.ind:hover{transform:translateY(-8px) scale(1.04);border-color:var(--gold);background:rgba(14,159,191,.18)}
+.tools .chips{margin-top:0}
+.cta-band{margin-top:60px;text-align:center;padding:44px 26px;border-radius:28px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(14,159,191,.22),rgba(11,42,91,.5))}
+.cta-band h3{font-size:1.8rem;margin-bottom:10px}
+.cta-band p{color:var(--muted);margin-bottom:22px}
+@media(max-width:960px){.compare{grid-template-columns:1fr}.compare .arrow{transform:rotate(90deg);text-align:center;animation:none}.steps::before{display:none}.logo-img{height:40px}}
+
+/* ===== RESPONSIVE FIXES (all screen sizes, no horizontal scroll) ===== */
+html{overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{overflow-x:hidden;max-width:100%;position:relative}
+img,svg,video,canvas{max-width:100%}
+section,footer,.marquee{overflow-x:clip}
+.container>*,.hero-grid>*,.split>*,.contact-box>*,.f-grid>*{min-width:0}
+.c-item div,.f-grid a,.f-grid p,.contact-box p,h1,h2,h3{overflow-wrap:anywhere}
+.hero{min-height:100vh;min-height:100svh}
+.ind-grid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+
+@media(min-width:1600px){.container{width:min(1320px,92%)}}
+
+@media(max-width:1100px){
+  .links{gap:20px}
+  .hero-grid{gap:20px}
+  .scene-wrap{height:470px}
+}
+
+@media(max-width:960px){
+  /* mobile menu: slide with transform so it never adds scroll width */
+  .links{right:0;transform:translateX(110%);visibility:hidden;transition:transform .5s,visibility .5s;gap:22px;max-width:320px}
+  .links.open{transform:none;visibility:visible}
+  .hero{padding-top:96px;text-align:center}
+  .hero-grid{text-align:center}
+  .hero p.lead{margin-left:auto;margin-right:auto}
+  .hero-btns,.trust{justify-content:center}
+  .scene-wrap{transform:none;height:400px;width:100%;overflow:hidden}
+  .scene{transform:scale(.8)}
+  .split{gap:40px}
+  .split>div{text-align:left}
+  section{padding:80px 0}
+  .browser{transform:rotateY(-6deg) rotateX(3deg)}
+  .head{margin-bottom:44px}
+}
+
+@media(max-width:768px){
+  .nav-in{gap:10px}
+  .badge{font-size:.78rem;padding:7px 14px}
+  .hero h1{font-size:clamp(2rem,8vw,2.8rem)}
+  .scene-wrap{height:360px}
+  .scene{transform:scale(.68)}
+  .grid4{grid-template-columns:1fr 1fr}
+  .steps,.steps.five{grid-template-columns:1fr 1fr}
+  .contact-box h2{font-size:1.9rem}
+  .cta-band h3{font-size:1.5rem}
+}
+
+@media(max-width:560px){
+  .container{width:90%}
+  section{padding:64px 0}
+  .logo-img{height:36px}
+  footer .logo-img{height:46px}
+  .hero{padding-top:88px}
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .hero-btns .btn{justify-content:center;width:100%}
+  .trust{gap:18px}
+  .trust b{font-size:1.35rem}
+  .scene-wrap{height:320px}
+  .scene{transform:scale(.58)}
+  .grid4,.steps,.steps.five{grid-template-columns:1fr}
+  .ind-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .ind{padding:20px 8px;font-size:.82rem}
+  .card{padding:28px 22px}
+  .chip{padding:10px 16px;font-size:.82rem}
+  .chips{gap:10px}
+  .checks li{padding:12px 14px;font-size:.9rem}
+  .cmp{padding:26px 22px}
+  .contact-box{padding:26px 18px;gap:28px;border-radius:24px}
+  .contact-box h2{font-size:1.6rem}
+  .c-item{padding:13px 14px}
+  .cta-band{padding:32px 18px}
+  .f-grid{grid-template-columns:1fr;gap:28px}
+  .wa{width:54px;height:54px;font-size:1.6rem;right:14px;bottom:14px}
+  .modal{padding:16px 10px}
+  .modal-box{padding:26px 18px;border-radius:20px}
+  .modal-box h2{font-size:1.5rem}
+  .tag{letter-spacing:2px;font-size:.72rem}
+  .marquee .track{gap:36px}
+}
+
+@media(max-width:380px){
+  .container{width:92%}
+  .hero h1{font-size:1.85rem}
+  .scene{transform:scale(.5)}
+  .scene-wrap{height:290px}
+  .btn{padding:13px 20px;font-size:.9rem}
+  .ind-grid{grid-template-columns:1fr 1fr}
+  .logo-img{height:32px}
+}
+
+@media(max-height:480px) and (orientation:landscape){
+  .hero{min-height:auto;padding:90px 0 50px}
+  .scene-wrap{height:300px}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container nav-in">
+    <a href="#home" class="logo" aria-label="DevNext home"><img src="logo.png" alt="DevNext" class="logo-img"></a>
+    <div class="links" id="links">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#shopify">Shopify</a>
+      <a href="#why">Why Us</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="btn btn-primary" style="color:#fff;padding:10px 22px">💬 Get a Quote</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge">🇦🇪 Trusted by growing brands across the UAE</div>
+      <h1>We Build <span class="gold">High-Converting</span><span class="typed gold"><span id="typed"></span><span class="cursor"></span></span></h1>
+      <p class="lead">🚀 DevNext helps UAE businesses launch stunning Shopify stores, modern websites and sleek mobile app designs — fast, premium and built to sell.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/923206708586?text=Hi%20DevNext%2C%20I%20want%20to%20start%20a%20project" target="_blank" class="btn btn-primary">💬 Chat on WhatsApp</a>
+        <a href="#services" class="btn btn-ghost">💎 Explore Services</a>
+      </div>
+      <div class="trust">
+        <div><b data-count="50">0</b>Projects 🛍️</div>
+        <div><b data-count="30">0</b>Happy Clients 😍</div>
+        <div><b data-count="24">0</b>Hr Support ⚡</div>
+      </div>
+    </div>
+
+    <div class="scene-wrap" id="sceneWrap">
+      <div class="glow-floor"></div>
+      <div class="scene" id="scene">
+        <div class="ring r3"></div>
+        <div class="ring r2"></div>
+        <div class="ring r1"></div>
+        <div class="cube">
+          <div class="face f1">🛍️<small>SHOPIFY</small></div>
+          <div class="face f2">💻<small>WEB DEV</small></div>
+          <div class="face f3">🎨<small>REDESIGN</small></div>
+          <div class="face f4">📱<small>APP UI/UX</small></div>
+          <div class="face f5">🚀<small>GROWTH</small></div>
+          <div class="face f6">💎<small>PREMIUM</small></div>
+        </div>
+        <div class="orb o1">🛒</div>
+        <div class="orb o2">⭐</div>
+        <div class="orb o3">📈</div>
+        <div class="orb o4">🔥</div>
+        <div class="orb o5">✨</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="track">
+    <span>🛍️ Shopify Stores</span><span>💻 Custom Websites</span><span>🎨 Website Redesign</span><span>📱 Mobile App UI/UX</span><span>📦 Dropshipping Setup</span><span>🚀 Speed Optimization</span><span>🔍 SEO Ready</span><span>💳 Payment Setup</span>
+    <span>🛍️ Shopify Stores</span><span>💻 Custom Websites</span><span>🎨 Website Redesign</span><span>📱 Mobile App UI/UX</span><span>📦 Dropshipping Setup</span><span>🚀 Speed Optimization</span><span>🔍 SEO Ready</span><span>💳 Payment Setup</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="head reveal">
+      <span class="tag">✦ OUR SERVICES ✦</span>
+      <h2 class="wordfx">What We Do <span class="gold">Best</span></h2>
+      <p>Four core services designed to take your business online and make it look world-class.</p>
+    </div>
+    <div class="grid4">
+      <div class="card reveal">
+        <div class="ico">🛍️</div>
+        <h3>Shopify Store Design & Development</h3>
+        <p>A complete, ready-to-sell store — from theme to payments to products.</p>
+        <ul><li>✅ Full store setup</li><li>✅ Dropshipping ready</li><li>✅ Apps & checkout setup</li></ul>
+      </div>
+      <div class="card reveal">
+        <div class="ico">🎨</div>
+        <h3>Website Redesign & Modernization</h3>
+        <p>Old website? We give it a fresh, fast and modern look that wins trust.</p>
+        <ul><li>✅ Modern UI refresh</li><li>✅ Faster loading</li><li>✅ Mobile friendly</li></ul>
+      </div>
+      <div class="card reveal">
+        <div class="ico">💻</div>
+        <h3>Custom Website Development</h3>
+        <p>Business, portfolio or company sites built exactly the way you imagine.</p>
+        <ul><li>✅ Clean, scalable code</li><li>✅ SEO friendly</li><li>✅ Admin-friendly</li></ul>
+      </div>
+      <div class="card reveal">
+        <div class="ico">📱</div>
+        <h3>Mobile App UI/UX Design</h3>
+        <p>Beautiful, easy-to-use app interfaces that users fall in love with.</p>
+        <ul><li>✅ Wireframes & prototypes</li><li>✅ iOS & Android style</li><li>✅ Developer-ready files</li></ul>
+      </div>
+    </div>
+    <div class="chips reveal">
+      <span class="chip">📦 Dropshipping Store</span><span class="chip">🧩 Shopify Apps Setup</span><span class="chip">🎯 Landing Pages</span><span class="chip">🔧 Maintenance & Support</span><span class="chip">🔍 SEO Basics</span><span class="chip">⚡ Speed Optimization</span><span class="chip">🌐 Arabic / RTL Support</span><span class="chip">💳 Payment Gateway Setup</span>
+    </div>
+  </div>
+</section>
+
+<!-- SHOPIFY -->
+<section id="shopify">
+  <div class="container split">
+    <div class="reveal">
+      <span class="tag">✦ SHOPIFY EXPERTS ✦</span>
+      <h2>Your Shopify Store, <span class="gold">Done For You</span></h2>
+      <p>Don't waste weeks figuring it out. We handle everything so you can focus on selling in the UAE market. 🇦🇪</p>
+      <ul class="checks">
+        <li>🏗️ <span><b>Complete store build</b> — theme, pages, collections, navigation</span></li>
+        <li>📦 <span><b>Dropshipping setup</b> — product import, suppliers & automation</span></li>
+        <li>💳 <span><b>Payments & shipping</b> — local-friendly checkout setup</span></li>
+        <li>📈 <span><b>Conversion focused</b> — designed to turn visitors into buyers</span></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary">🛒 Start My Store</a>
+    </div>
+    <div class="mock reveal">
+      <div class="browser">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div class="shop">
+          <div class="item">👟</div><div class="item">⌚</div><div class="item">👜</div>
+          <div class="item">🎧</div><div class="item">🕶️</div><div class="item">💄</div>
+        </div>
+        <div class="cartbar"><span>🛒 3 items in cart</span><span>Checkout →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DROPSHIPPING -->
+<section id="dropshipping">
+  <div class="container">
+    <div class="head reveal">
+      <span class="tag">✦ DROPSHIPPING ✦</span>
+      <h2 class="wordfx">Launch Your <span class="gold">Dropshipping</span> Business</h2>
+      <p>No inventory, no stress. We build the complete store and systems so you can start selling to customers in the UAE. 📦</p>
+    </div>
+    <div class="steps five">
+      <div class="step reveal"><div class="n">🔎</div><h3>Niche & Products</h3><p>We help you pick a profitable niche and winning products.</p></div>
+      <div class="step reveal"><div class="n">🤝</div><h3>Supplier Setup</h3><p>Connect reliable suppliers and sync products to your store.</p></div>
+      <div class="step reveal"><div class="n">🏗️</div><h3>Store Build</h3><p>A premium, branded store with strong product pages.</p></div>
+      <div class="step reveal"><div class="n">⚙️</div><h3>Automation</h3><p>Order sync, tracking and the right apps set up for you.</p></div>
+      <div class="step reveal"><div class="n">🚀</div><h3>Launch & Support</h3><p>Go live with a tested checkout and ongoing help.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REDESIGN -->
+<section id="redesign">
+  <div class="container">
+    <div class="head reveal">
+      <span class="tag">✦ WEBSITE REDESIGN ✦</span>
+      <h2 class="wordfx">From <span class="gold">Outdated</span> to Outstanding</h2>
+      <p>A modern website builds trust in seconds. See what changes when we redesign your site. 🎨</p>
+    </div>
+    <div class="compare">
+      <div class="cmp bad reveal">
+        <h3>😕 Before</h3>
+        <ul><li>❌ Slow loading pages</li><li>❌ Not mobile friendly</li><li>❌ Confusing navigation</li><li>❌ Weak first impression</li><li>❌ Few enquiries and sales</li></ul>
+      </div>
+      <div class="arrow">➡️</div>
+      <div class="cmp good reveal">
+        <h3>😍 After DevNext</h3>
+        <ul><li>✅ Fast, optimized performance</li><li>✅ Perfect on every screen</li><li>✅ Clear, simple navigation</li><li>✅ Premium, trustworthy design</li><li>✅ Clear calls-to-action that convert</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="container">
+    <div class="head reveal">
+      <span class="tag">✦ WHY DEVNEXT ✦</span>
+      <h2 class="wordfx">Built for <span class="gold">UAE Businesses</span></h2>
+      <p>Clean design, solid code and a team that understands what your customers expect.</p>
+    </div>
+    <div class="grid4">
+      <div class="card reveal"><div class="ico">🎯</div><h3>Conversion-First Design</h3><p>Every layout, button and product page is planned to turn visitors into customers.</p></div>
+      <div class="card reveal"><div class="ico">⚡</div><h3>Fast & Optimized</h3><p>Lightweight code and optimized images so your site loads quickly on any connection.</p></div>
+      <div class="card reveal"><div class="ico">📱</div><h3>Mobile-First</h3><p>Most UAE shoppers browse on their phones, so we design for mobile before desktop.</p></div>
+      <div class="card reveal"><div class="ico">🌐</div><h3>English + Arabic Ready</h3><p>Bilingual layouts with proper right-to-left support when your audience needs it.</p></div>
+      <div class="card reveal"><div class="ico">🔒</div><h3>Secure & Reliable</h3><p>Safe checkout, trusted payment gateways and clean, maintainable code.</p></div>
+      <div class="card reveal"><div class="ico">🤝</div><h3>Friendly Support</h3><p>Quick replies on WhatsApp and help after launch, so you're never left alone.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES + TOOLS -->
+<section id="industries">
+  <div class="container">
+    <div class="head reveal">
+      <span class="tag">✦ INDUSTRIES ✦</span>
+      <h2 class="wordfx">Who We <span class="gold">Work With</span></h2>
+      <p>From online shops to local service businesses, we build websites that fit your market.</p>
+    </div>
+    <div class="ind-grid">
+      <div class="ind reveal"><span>👗</span>Fashion & Clothing</div>
+      <div class="ind reveal"><span>💄</span>Beauty & Cosmetics</div>
+      <div class="ind reveal"><span>📱</span>Electronics & Gadgets</div>
+      <div class="ind reveal"><span>🏠</span>Home & Furniture</div>
+      <div class="ind reveal"><span>🍽️</span>Restaurants & Cafés</div>
+      <div class="ind reveal"><span>🏢</span>Real Estate & Services</div>
+      <div class="ind reveal"><span>🏋️</span>Fitness & Wellness</div>
+      <div class="ind reveal"><span>🧸</span>Kids & Toys</div>
+    </div>
+    <div class="tools">
+      <div class="head reveal">
+        <span class="tag">✦ TOOLS WE USE ✦</span>
+        <h2 class="wordfx">Modern <span class="gold">Tech Stack</span></h2>
+      </div>
+      <div class="chips reveal">
+        <span class="chip">🛍️ Shopify</span><span class="chip">🧱 Liquid</span><span class="chip">🎨 Figma</span><span class="chip">🟨 JavaScript</span><span class="chip">🌀 WordPress</span><span class="chip">🧩 HTML5 & CSS3</span><span class="chip">🔍 SEO Tools</span><span class="chip">📊 Analytics</span>
+      </div>
+    </div>
+    <div class="cta-band reveal">
+      <h3>Have a project in mind? 💡</h3>
+      <p>Tell us what you need and we'll get back to you quickly with a free consultation.</p>
+      <a class="btn btn-primary" target="_blank" href="https://wa.me/923206708586?text=Hi%20DevNext%2C%20I%20would%20like%20a%20free%20consultation">💬 Get a Free Consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="head reveal">
+      <span class="tag">✦ HOW IT WORKS ✦</span>
+      <h2>Simple <span class="gold">4-Step</span> Process</h2>
+      <p>From idea to launch — clear, quick and stress free.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">💬</div><h3>1. Discuss</h3><p>Tell us your idea & goals on WhatsApp.</p></div>
+      <div class="step reveal"><div class="n">✏️</div><h3>2. Design</h3><p>We craft a premium look for your brand.</p></div>
+      <div class="step reveal"><div class="n">⚙️</div><h3>3. Develop</h3><p>We build, test and optimize everything.</p></div>
+      <div class="step reveal"><div class="n">🚀</div><h3>4. Launch</h3><p>Go live with support after delivery.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <div>
+        <span class="tag">✦ LET'S TALK ✦</span>
+        <h2>Ready to <span class="gold">Grow Online?</span> 🚀</h2>
+        <p>Tell us about your project and we'll reply fast with a free quote.</p>
+        <a class="c-item" href="https://wa.me/923206708586" target="_blank"><span class="i">💬</span><div><small>WhatsApp</small>+92 320 6708586</div></a>
+        <a class="c-item" href="mailto:devnext.site@gmail.com"><span class="i">📧</span><div><small>Email</small>devnext.site@gmail.com</div></a>
+        <div class="c-item"><span class="i">🌍</span><div><small>Serving</small>UAE & Worldwide</div></div>
+      </div>
+      <form id="form">
+        <input type="text" id="fname" placeholder="👤 Your Name" required>
+        <input type="email" id="femail" placeholder="📧 Your Email" required>
+        <select id="fservice">
+          <option>🛍️ Shopify Store</option>
+          <option>🎨 Website Redesign</option>
+          <option>💻 Custom Website</option>
+          <option>📱 Mobile App UI/UX</option>
+          <option>📦 Dropshipping Store</option>
+        </select>
+        <textarea id="fmsg" placeholder="📝 Tell us about your project..." required></textarea>
+        <button class="btn btn-primary" type="submit">✨ Send via WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <a href="#home" class="logo" aria-label="DevNext home"><img src="logo.png" alt="DevNext" class="logo-img"></a>
+        <p>Premium Shopify & web development for UAE businesses. Built to look great and sell more. 💎</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#services">Services</a><a href="#shopify">Shopify</a><a href="#dropshipping">Dropshipping</a><a href="#why">Why Us</a><a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Policies</h4>
+        <a data-modal="privacy">🔒 Privacy Policy</a>
+        <a data-modal="terms">📜 Terms & Conditions</a>
+        <a data-modal="refund">💸 Refund Policy</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="https://wa.me/923206708586" target="_blank">💬 +92 320 6708586</a>
+        <a href="mailto:devnext.site@gmail.com">📧 devnext.site@gmail.com</a>
+        <a href="https://devnext.site">🌐 DevNext.site</a>
+      </div>
+    </div>
+    <div class="copy">© <span id="yr"></span> DevNext. All rights reserved. Made with ❤️ for UAE businesses.</div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/923206708586?text=Hi%20DevNext" target="_blank" aria-label="WhatsApp">💬</a>
+
+<!-- POLICY MODALS (later you can move each into its own .html file) -->
+<div class="modal" id="m-privacy"><div class="modal-box"><button class="close">✕</button>
+  <h2>🔒 Privacy Policy</h2><p>Last updated: <span class="ud"></span></p>
+  <h3>1. Information We Collect</h3><p>We collect the details you share with us such as your name, email address, phone number and project requirements when you contact us.</p>
+  <h3>2. How We Use It</h3><p>Your information is used only to reply to your inquiry, provide quotes, deliver services and improve our communication.</p>
+  <h3>3. Data Protection</h3><p>We do not sell or rent your personal data. We take reasonable steps to keep your information safe.</p>
+  <h3>4. Third-Party Tools</h3><p>We may use tools like WhatsApp, email and analytics, which have their own privacy policies.</p>
+  <h3>5. Contact</h3><p>Questions? Email devnext.site@gmail.com.</p>
+</div></div>
+
+<div class="modal" id="m-terms"><div class="modal-box"><button class="close">✕</button>
+  <h2>📜 Terms & Conditions</h2><p>Last updated: <span class="ud"></span></p>
+  <h3>1. Services</h3><p>DevNext provides web development, Shopify store setup, website redesign and mobile app UI/UX design as agreed with the client.</p>
+  <h3>2. Payments</h3><p>Projects start after an agreed advance payment. The remaining balance is due before final delivery of files or access.</p>
+  <h3>3. Client Responsibilities</h3><p>Clients must provide required content, logos, product details and timely feedback. Delays may affect delivery time.</p>
+  <h3>4. Revisions</h3><p>Each plan includes a reasonable number of revisions. Extra work outside the agreed scope may be charged separately.</p>
+  <h3>5. Ownership</h3><p>After full payment, the client owns the final deliverables. DevNext may showcase the work in its portfolio unless requested otherwise.</p>
+  <h3>6. Liability</h3><p>DevNext is not responsible for losses from third-party platforms, hosting, suppliers or services outside our control.</p>
+</div></div>
+
+<div class="modal" id="m-refund"><div class="modal-box"><button class="close">✕</button>
+  <h2>💸 Refund Policy</h2><p>Last updated: <span class="ud"></span></p>
+  <h3>1. Before Work Starts</h3><p>If you cancel before we begin work, your advance payment can be refunded.</p>
+  <h3>2. After Work Starts</h3><p>Once design or development has started, the advance payment is non-refundable as it covers time and resources already used.</p>
+  <h3>3. Issues</h3><p>If something doesn't match the agreed scope, we will fix it free of charge within a reasonable time.</p>
+  <h3>4. Contact</h3><p>For refund requests, email devnext.site@gmail.com.</p>
+</div></div>
+
+<script>
+// year + dates
+document.getElementById('yr').textContent=new Date().getFullYear();
+document.querySelectorAll('.ud').forEach(e=>e.textContent=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}));
+
+// nav
+const nav=document.getElementById('nav'),links=document.getElementById('links');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+document.getElementById('burger').onclick=()=>links.classList.toggle('open');
+links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
+
+// typing text
+const words=[" Shopify Stores 🛍️"," Modern Websites 💻"," Dropshipping Brands 📦"," App Designs 📱"];
+let wi=0,ci=0,del=false;const t=document.getElementById('typed');
+(function type(){
+  const w=words[wi];
+  t.textContent=w.slice(0,ci+=del?-1:1);
+  let d=del?45:90;
+  if(!del&&ci===w.length){del=true;d=1600}
+  else if(del&&ci===0){del=false;wi=(wi+1)%words.length;d=300}
+  setTimeout(type,d);
+})();
+
+// 3D mouse tilt on hero scene
+const scene=document.getElementById('scene'),wrap=document.getElementById('sceneWrap');
+wrap.addEventListener('mousemove',e=>{
+  const r=wrap.getBoundingClientRect();
+  const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+  scene.style.transform=`rotateY(${x*40}deg) rotateX(${-y*30}deg)`;
+});
+wrap.addEventListener('mouseleave',()=>scene.style.transform='');
+
+// word-by-word reveal
+document.querySelectorAll('.wordfx').forEach(el=>{
+  const nodes=[...el.childNodes];el.innerHTML='';
+  let i=0;
+  nodes.forEach(n=>{
+    if(n.nodeType===3){
+      n.textContent.split(' ').filter(Boolean).forEach(w=>{const s=document.createElement('span');s.innerHTML=w+'&nbsp;';s.style.transitionDelay=(i++*.12)+'s';el.appendChild(s)});
+    } else {
+      const s=document.createElement('span');s.appendChild(n);s.style.transitionDelay=(i++*.12)+'s';el.appendChild(s);
+    }
+  });
+});
+
+// scroll reveal + counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}
+}),{threshold:.15});
+document.querySelectorAll('.reveal,.wordfx').forEach(el=>io.observe(el));
+document.querySelectorAll('.reveal').forEach((el,i)=>el.style.transitionDelay=(i%4)*.1+'s');
+
+document.querySelectorAll('[data-count]').forEach(el=>{
+  const end=+el.dataset.count;let n=0;
+  const step=()=>{n+=Math.max(1,end/50);if(n>=end){el.textContent=end+'+'}else{el.textContent=Math.floor(n)+'+';requestAnimationFrame(step)}};
+  setTimeout(step,600);
+});
+
+// contact form -> WhatsApp
+document.getElementById('form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const msg=`Hello DevNext! 👋%0AName: ${encodeURIComponent(fname.value)}%0AEmail: ${encodeURIComponent(femail.value)}%0AService: ${encodeURIComponent(fservice.value)}%0AProject: ${encodeURIComponent(fmsg.value)}`;
+  window.open('https://wa.me/923206708586?text='+msg,'_blank');
+});
+
+// modals
+document.querySelectorAll('[data-modal]').forEach(a=>a.onclick=()=>{document.getElementById('m-'+a.dataset.modal).classList.add('open');document.body.style.overflow='hidden'});
+document.querySelectorAll('.modal').forEach(m=>{
+  const close=()=>{m.classList.remove('open');document.body.style.overflow=''};
+  m.querySelector('.close').onclick=close;
+  m.addEventListener('click',e=>{if(e.target===m)close()});
+});
+addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal.open .close').forEach(b=>b.click())});
+
+// scroll progress line (left to right)
+const prog=document.getElementById('progress');
+function setProg(){const d=document.documentElement.scrollHeight-innerHeight;prog.style.width=(d>0?scrollY/d*100:0)+'%'}
+addEventListener('scroll',setProg,{passive:true});addEventListener('resize',setProg);setProg();
+document.querySelectorAll('.head').forEach(hd=>{const l=document.createElement('span');l.className='line';hd.appendChild(l)});
+document.querySelectorAll('.steps,.head').forEach(el=>io.observe(el));
+
+// particles
+const cv=document.getElementById('particles'),cx=cv.getContext('2d');
+let W,H,P=[];
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+size();addEventListener('resize',size);
+for(let i=0;i<55;i++)P.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*2+.5,s:Math.random()*.5+.15,a:Math.random()*.5+.2});
+(function draw(){
+  cx.clearRect(0,0,W,H);
+  P.forEach(p=>{
+    p.y-=p.s;if(p.y<-5){p.y=H+5;p.x=Math.random()*W}
+    cx.beginPath();cx.arc(p.x,p.y,p.r,0,7);cx.fillStyle=`rgba(34,211,238,${p.a})`;cx.fill();
+  });
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
